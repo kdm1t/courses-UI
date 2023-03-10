@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Handing Form Submission</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>Курсы</h1>
+<table>
+  <thead>
+  <tr>
+    <th> Наименование курса                </th>
+    <th> Направление обучения              </th>
+    <th> Организация                       </th>
+    <th> Длительность, академических часов </th>
+    <th> Стоимость, руб.                   </th>
+    <th> Гарантия трудоустройства          </th>
+    <th> Наличие рассрочки                 </th>
+    <th> Рассрочка, руб./месяц             </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${values.isEmpty()}">
+    <td colspan="2"> No Courses </td>
+  </tr>
+  <tr th:each="course : ${values}">
+    <td><span th:text="${course.name}">                               Наименование курса                 </span></td>
+    <td><span th:text="${course.directionOfStudy.directionOfStudy}">  Направление обучения               </span></td>
+    <td><span th:text="${course.owner.organization}">                 Организация                        </span></td>
+    <td><span th:text="${course.duration}">                           Длительность, академических часов  </span></td>
+    <td><span th:text="${course.price}">                              Стоимость, руб.                    </span></td>
+    <td><span th:text="${course.jobGuarantee.jobGuarantee}">          Гарантия трудоустройства           </span></td>
+    <td><span th:text="${course.credit.available}">                   Наличие рассрочки                  </span></td>
+    <td><span th:text="${course.credit.priceInMonth}">                Рассрочка, руб./месяц              </span></td>
+  </tr>
+  </tbody>
+</table>
+</form>
+
+
+</body>
+</html>
